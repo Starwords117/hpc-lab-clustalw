@@ -71,6 +71,7 @@ AC_SUBST(CLUSTALW_NAME)
 # This macro is always needed for automake
 # Obsolete: It takes the program name and version number as arguments.
 AM_INIT_AUTOMAKE([])
+AM_MAINTAINER_MODE([disable])
 
 AC_PROG_MAKE_SET
 
