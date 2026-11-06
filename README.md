@@ -9,7 +9,7 @@ ClustalW 是多序列比对（生物信息学基础操作）的奠基软件，19
 ## 你的任务
 
 1. 编译并跑出基线（见"快速开始"）；
-2. 用 `perf` / `gprof` 找出程序热点，把剖析证据写进报告；
+2. 找出程序热点，把定位证据写进报告（Linux 推荐 `perf` / `gprof` 剖析；任何平台也可以用**计时代码插桩**——在主要阶段外打时间戳统计耗时占比——或代码结构分析代替）；
 3. 在**不改变程序输出**的前提下做多核优化（OpenMP / std::thread 均可）；
 4. 测量 1 / 2 / 4 / 8 线程加速比，提交代码 diff + 优化报告。
 
@@ -17,7 +17,7 @@ ClustalW 是多序列比对（生物信息学基础操作）的奠基软件，19
 
 - Linux + gcc/g++（8 核以上 CPU；16G 内存绰绰有余，本题峰值内存 < 100 MB）
 - 无任何第三方库依赖
-- **Windows 用户**：请安装 WSL2（管理员 PowerShell 运行 `wsl --install -d Ubuntu`），在 Ubuntu 内按本文档操作——所有命令原样适用。原生 MinGW/MSYS2 虽可编译本代码，但缺少 perf 且计时脚本不可用，不建议
+- **Windows 用户**：推荐安装 WSL2（管理员 PowerShell 运行 `wsl --install -d Ubuntu`），在 Ubuntu 内按本文档操作——所有命令原样适用。原生 MinGW/MSYS2 也可以编译运行：判题脚本已自动兼容 Windows 换行符，热点定位可用计时代码插桩替代 perf；但 WSL2 的环境与评分机器一致，体验更顺
 
 ## 快速开始
 
@@ -53,7 +53,7 @@ cp ../data/rna_rnasep_1100.fa . && ../src/clustalw2 -infile=rna_rnasep_1100.fa -
   ../scripts/bench.sh "../src/clustalw2 -infile=rna_rnasep_1100.fa -type=dna"
   ```
 
-- 提交：代码 diff（或 git 分支）+ 优化报告（热点剖析证据、方案说明、加速比表、讨论）
+- 提交：代码 diff（或 git 分支）+ 优化报告（热点定位证据、方案说明、加速比表、讨论）
 - 报告请附 `lscpu` 输出与编译器版本
 
 ## 规则

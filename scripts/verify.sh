@@ -20,7 +20,9 @@ for f in "$@"; do
         echo "SKIP: 基准中没有 $(basename "$f")"
         continue
     fi
-    if cmp -s "$f" "$b"; then
+    # Windows 原生编译跑出的产物是 CRLF 行尾: 比对前归一化换行符,
+    # 比对内容(序列字母/树括号)仍是逐字节严格
+    if cmp -s <(tr -d '\r' < "$f") <(tr -d '\r' < "$b"); then
         echo "PASS: $(basename "$f") 与基准逐字节一致 ✔"
     else
         echo "FAIL: $(basename "$f") 与基准不一致 ✘"
