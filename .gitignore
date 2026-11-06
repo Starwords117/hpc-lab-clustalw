@@ -1,0 +1,24 @@
+# 构建产物
+src/*.o
+src/.deps/
+src/clustalw2
+src/config.h
+src/Makefile
+src/config.log
+src/config.status
+src/stamp-h1
+Makefile
+config.log
+config.status
+stamp-h1
+autom4te.cache/
+aclocal.m4
+clustalw_help
+
+# 本地运行目录（README 指定在 runs/ 下工作）
+runs/
+bench_run_*.out
+bench_run_*.err
+# 若直接以 data/ 内文件为输入, 输出会落在 data/, 不要提交
+data/*.aln
+data/*.dnd
