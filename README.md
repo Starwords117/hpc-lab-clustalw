@@ -17,6 +17,7 @@ ClustalW 是多序列比对（生物信息学基础操作）的奠基软件，19
 
 - Linux + gcc/g++（8 核以上 CPU；16G 内存绰绰有余，本题峰值内存 < 100 MB）
 - 无任何第三方库依赖
+- **Windows 用户**：请安装 WSL2（管理员 PowerShell 运行 `wsl --install -d Ubuntu`），在 Ubuntu 内按本文档操作——所有命令原样适用。原生 MinGW/MSYS2 虽可编译本代码，但缺少 perf 且计时脚本不可用，不建议
 
 ## 快速开始
 
