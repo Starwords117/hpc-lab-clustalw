@@ -30,7 +30,7 @@ mkdir -p runs && cd runs
 cp ../data/rna_rnasep_200.fa . && ../src/clustalw2 -infile=rna_rnasep_200.fa -type=dna
 # 自测（参考机器 ~41 s）
 cp ../data/rna_rnasep_400.fa . && ../src/clustalw2 -infile=rna_rnasep_400.fa -type=dna
-# 全量基线（参考机器 ≈5 min）
+# 全量基线（参考机器 ≈5 min，普通笔记本 ≈9 min）
 cp ../data/rna_rnasep_1100.fa . && ../src/clustalw2 -infile=rna_rnasep_1100.fa -type=dna
 ```
 
@@ -46,10 +46,10 @@ cp ../data/rna_rnasep_1100.fa . && ../src/clustalw2 -infile=rna_rnasep_1100.fa -
 
 ## 计时与提交
 
-- 每个规模跑 3 次取中位数（脚本会保留各次输出）：
+- 每个规模跑 3 次取中位数（脚本会保留各次输出；输入用 runs/ 里已拷贝的副本，避免输出写进 `data/`）：
 
   ```bash
-  ../scripts/bench.sh "../src/clustalw2 -infile=../data/rna_rnasep_1100.fa -type=dna"
+  ../scripts/bench.sh "../src/clustalw2 -infile=rna_rnasep_1100.fa -type=dna"
   ```
 
 - 提交：代码 diff（或 git 分支）+ 优化报告（热点剖析证据、方案说明、加速比表、讨论）
